@@ -46,16 +46,13 @@ def main():
 
                 # Очікуємо формат рядка від Arduino: "512,498,530,505"
                 parts = line.split(",")
-                if len(parts) != 4:
+                if len(parts) != 5:
                     continue
 
                 try:
-                    c1, c2, c3, c4 = map(int, parts)
+                    xor_bit, c1, c2, c3, c4 = map(int, parts)
                 except ValueError:
                     continue
-
-                # Беремо молодший біт (LSB) кожного каналу і робимо побітовий XOR
-                xor_bit = (c1 & 1) ^ (c2 & 1) ^ (c3 & 1) ^ (c4 & 1)
 
                 ts = datetime.now(timezone.utc).isoformat()
                 writer.writerow([ts, c1, c2, c3, c4, xor_bit])
