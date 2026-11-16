@@ -177,7 +177,7 @@ def main():
     axs[1, 1].grid(True, alpha=0.3)
 
     plt.tight_layout()
-    output_img = "trng_analysis.png"
+    output_img = "trng_analysi_20261114s.png"
     plt.savefig(output_img, dpi=150)
     print(f"\nГрафік успішно збережено у файл: {output_img}")
 
